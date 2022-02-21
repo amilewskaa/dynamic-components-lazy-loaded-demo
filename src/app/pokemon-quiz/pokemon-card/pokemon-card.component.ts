@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   NgModule,
+  OnInit,
   Output,
 } from '@angular/core';
 import { CardModule } from './../../card/card.module';
@@ -13,7 +14,7 @@ import { CardModule } from './../../card/card.module';
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.scss'],
 })
-export class PokemonCardComponent {
+export class PokemonCardComponent implements OnInit {
   @Input() question!: any;
   @Output() questionAnswered = new EventEmitter<string>();
   imageSrc!: string;
