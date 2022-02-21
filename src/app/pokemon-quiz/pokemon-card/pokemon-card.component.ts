@@ -6,7 +6,7 @@ import {
   NgModule,
   Output,
 } from '@angular/core';
-import { CardModule } from 'src/app/card/card.module';
+import { CardModule } from './../../card/card.module';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -35,4 +35,4 @@ export class PokemonCardComponent {
   declarations: [PokemonCardComponent],
   imports: [CardModule, CommonModule],
 })
-class PokemonCardModule {}
+class PokemonCardModule { }

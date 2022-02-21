@@ -16,7 +16,7 @@ export class CreatePokemonQuizDirective {
   private _index = 0;
 
   constructor(
-    private el: ElementRef,
+    private elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
     private pokemonQuizService: PokemonQuizService,
     private renderer: Renderer2
@@ -26,10 +26,6 @@ export class CreatePokemonQuizDirective {
     const question = this.pokemonQuizService.getQuestion(this._index);
     this.renderPokemonCardComponent(question);
     this.toogleStartButton(false);
-  }
-
-  public getElement(): ElementRef {
-    return this.el;
   }
 
   async renderPokemonCardComponent(question: any) {
@@ -53,7 +49,7 @@ export class CreatePokemonQuizDirective {
       .subscribe(() => this.correctAnswerCallback());
   }
 
-  correctAnswerCallback() {
+  private correctAnswerCallback() {
     this._index++;
 
     const newQuestion = this.pokemonQuizService.getQuestion(this._index);
@@ -89,7 +85,7 @@ export class CreatePokemonQuizDirective {
 
   private toogleStartButton(shouldDisplay: boolean) {
     shouldDisplay
-      ? (this.el.nativeElement.style.display = 'block')
-      : (this.el.nativeElement.style.display = 'none');
+      ? (this.elementRef.nativeElement.style.display = 'block')
+      : (this.elementRef.nativeElement.style.display = 'none');
   }
 }

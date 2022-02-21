@@ -7,6 +7,4 @@ import {
   templateUrl: './pokemon-quiz.component.html',
   styleUrls: ['./pokemon-quiz.component.scss'],
 })
-export class PokemonQuizComponent {
-  module2imageSrc = '';
-}
+export class PokemonQuizComponent { }
