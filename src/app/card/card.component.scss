@@ -1,0 +1,27 @@
+[card] {
+  background-color: white;
+  color: #001ea0;
+  box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+  width: 400px;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-family: "Indie Flower", cursive;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+[card-content] {
+  font-size: 42px;
+  min-width: 285px;
+  padding-right: 5px;
+}
+
+[card-image] {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  left: 275px;
+  border-radius: 50%;
+}

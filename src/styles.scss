@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+$global-padding: 0 20px;
+
+body {
+  background: #ebebeb;
+  margin: 0;
+}
+
+[header] {
+  background-color: #1e1259;
+  height: 50px;
+  padding: $global-padding;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #beedff;
+    cursor: pointer;
+  }
+}
+
+[content] {
+  padding: $global-padding;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dynamic-template {
+  [card] {
+    animation: bounceIn 1s;
+  }
+}
+
+button {
+  background-color: #1e1259;
+  color: #d0e8ff;
+  padding: 6px 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: transparent;
+}

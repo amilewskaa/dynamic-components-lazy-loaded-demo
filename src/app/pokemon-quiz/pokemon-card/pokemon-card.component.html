@@ -1,0 +1,13 @@
+<app-card [imageSrc]="imageSrc">
+  <ng-content></ng-content>
+  What's that pokemon?
+  <section class="action">
+    <button
+      *ngFor="let answer of question.possibleAnswers"
+      [class.correct]="answered && answer === question.correctAnswer"
+      (click)="selectAnswer(answer)"
+    >
+      {{ answer }}
+    </button>
+  </section>
+</app-card>
