@@ -24,13 +24,11 @@ export class PokemonCardComponent implements OnInit {
     this.imageSrc = `assets/images/${this.question.imageHidden}`;
   }
 
-
-
   selectAnswer(answer: string) {
     if (this.question.correctAnswer === answer) {
-      this.questionAnswered.next(answer);
       this.imageSrc = `assets/images/${this.question.imageActive}`;
       this.answered = true;
+      this.questionAnswered.next(answer);
     }
   }
 }
