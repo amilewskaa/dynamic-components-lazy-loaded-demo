@@ -14,6 +14,7 @@ import { PokemonQuizService } from './pokemon-quiz.service';
 })
 export class CreatePokemonQuizDirective {
   private _index = 0;
+  private _lastCard: any;
 
   constructor(
     private elementRef: ElementRef,
@@ -23,9 +24,9 @@ export class CreatePokemonQuizDirective {
   ) { }
 
   @HostListener('click') onClick() {
+    this.toogleStartButton(false);
     const question = this.pokemonQuizService.getQuestion(this._index);
     this.renderPokemonCardComponent(question);
-    this.toogleStartButton(false);
   }
 
   async renderPokemonCardComponent(question: any) {
@@ -35,18 +36,18 @@ export class CreatePokemonQuizDirective {
 
     const element = this.renderer.createText(`Question ${this._index + 1}: `);
 
-    const componentRef = this.viewContainerRef.createComponent(
+    this._lastCard = this.viewContainerRef.createComponent(
       PokemonCardComponent,
       {
         projectableNodes: [[element]],
       }
     );
+    this._lastCard.instance.question = question;
+    this._lastCard.changeDetectorRef.detectChanges();
 
-    componentRef.instance.question = question;
-
-    componentRef.instance.questionAnswered
-      .pipe(take(1))
-      .subscribe(() => this.correctAnswerCallback());
+    this._lastCard.instance.questionAnswered.subscribe(() => {
+      this.correctAnswerCallback();
+    });
   }
 
   private correctAnswerCallback() {
@@ -55,9 +56,11 @@ export class CreatePokemonQuizDirective {
     const newQuestion = this.pokemonQuizService.getQuestion(this._index);
     if (newQuestion === undefined) {
       this.renderCompleteQuizCard();
+      this._lastCard.changeDetectorRef.detectChanges();
       return;
     }
     this.renderPokemonCardComponent(newQuestion);
+    this._lastCard.changeDetectorRef.detectChanges();
   }
 
   private renderCompleteQuizCard() {
