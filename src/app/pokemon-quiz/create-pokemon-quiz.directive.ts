@@ -45,7 +45,7 @@ export class CreatePokemonQuizDirective {
     this._lastCard.instance.question = question;
     this._lastCard.changeDetectorRef.detectChanges();
 
-    this._lastCard.instance.questionAnswered.subscribe(() => {
+    this._lastCard.instance.questionAnswered.pipe(take(1)).subscribe(() => {
       this.correctAnswerCallback();
     });
   }
